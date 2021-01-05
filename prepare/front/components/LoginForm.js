@@ -6,6 +6,7 @@ import Link from 'next/link';
 // modules
 import styled from 'styled-components';
 import { Form, Input, Button } from 'antd';
+import useInput from '../hooks/useInput';
 
 const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -16,16 +17,8 @@ const StyledForm = styled(Form)`
 `;
 
 const LoginForm = ({ setIsLoggedIn }) => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
-
-  const onChangeId = useCallback((e) => {
-    setId(e.target.value);
-  }, []);
-
-  const onChangePassword = useCallback((e) => {
-    setPassword(e.target.value);
-  }, []);
+  const [id, onChangeId] = useInput('');
+  const [password, onChangePassword] = useInput('');
 
   const onSubmitForm = useCallback(() => {
     console.log(id, password);
@@ -41,7 +34,8 @@ const LoginForm = ({ setIsLoggedIn }) => {
           name="user-id"
           value={id}
           onChange={onChangeId}
-          required />
+          required
+        />
       </div>
       <div>
         <label htmlFor="user-password">패스워드</label>

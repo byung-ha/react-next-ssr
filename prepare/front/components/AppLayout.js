@@ -11,10 +11,6 @@ import { Menu, Input, Row, Col } from 'antd';
 import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
 
-const InputSearch = styled(Input.Search)`
-  vertical-align: middle;
-`;
-
 const AppLayout = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -28,7 +24,7 @@ const AppLayout = ({ children }) => {
           <Link href="/profile"><a>프로필</a></Link>
         </Menu.Item>
         <Menu.Item>
-          <InputSearch />
+          <Input.Search style={{ verticalAlign: 'middle' }} />
         </Menu.Item>
         <Menu.Item>
           <Link href="/signup"><a>회원가입</a></Link>
